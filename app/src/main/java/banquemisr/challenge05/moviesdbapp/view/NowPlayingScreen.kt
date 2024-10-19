@@ -53,7 +53,7 @@ fun NowPlayingScreen(navController: NavController, viewModel: MoviesViewModel) {
     fun MovieCard(movie: Movie, navController: NavController) {
         Card(
             modifier = Modifier
-                .height(200.dp)
+                .height(250.dp)
                 .width(350.dp)
                 .clickable {
                     navController.navigate("movieDetails/${movie.title}")
@@ -70,7 +70,7 @@ fun NowPlayingScreen(navController: NavController, viewModel: MoviesViewModel) {
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .width(200.dp)
-                            .height(200.dp)
+                            .height(250.dp)
                             .padding(end = 10.dp)
                     )
                     Column(modifier = Modifier.align(Alignment.CenterVertically)) {

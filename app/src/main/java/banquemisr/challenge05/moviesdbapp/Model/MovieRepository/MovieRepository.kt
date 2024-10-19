@@ -91,5 +91,38 @@ class MovieRepository (private  val apiService: TmdbApiService,
             emit(cachedMovies)
         }
     }.flowOn(Dispatchers.IO)
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    suspend fun getUpComingMovies(apikey: String): Flow<List<Movie>> = flow {
+        try {
+            val response = apiService.getPopularMovies(apikey)
+            Log.d("PopularMoviesFromMovieRepository", "Response: $response")
+            val movies = response.results.map {
+                Movie(
+                    it.adult,
+                    it.backdrop_path,
+                    it.id,
+                    it.original_language,
+                    it.original_title,
+                    it.overview,
+                    it.popularity,
+                    it.poster_path,
+                    it.release_date,
+                    it.title,
+                    it.video,
+                    it.vote_average,
+                    it.vote_count
 
+
+                )
+            }
+
+            movieDao.insertMovies(movies)
+            emit(movies)
+
+
+        }catch (e: HttpException){
+            val cachedMovies = movieDao.getAllMovies().first()
+            emit(cachedMovies)
+        }
+    }.flowOn(Dispatchers.IO)
 }

@@ -19,10 +19,22 @@ class MoviesViewModel (private val repository: MovieRepository,
         private val _popularMovies = MutableStateFlow<List<Movie>>(emptyList())
         val popularMovies: MutableStateFlow<List<Movie>> get() = _popularMovies
 
+        val _upcomingMovies=MutableStateFlow<List<Movie>>(emptyList())
+       val upcomingMovies: MutableStateFlow<List<Movie>> get() = _upcomingMovies
+
 init {
     fetchNowPlayingMovies()
     getPopularMovies()
+    getUpcomingMovies()
 }
+
+    private fun getUpcomingMovies() {
+        viewModelScope.launch {
+            repository.getUpComingMovies(RetrofitClient.API_KEY).collect{
+                _upcomingMovies.value=it
+            }
+        }
+    }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     private fun fetchNowPlayingMovies() {
