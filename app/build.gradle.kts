@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -69,22 +70,37 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     // Jetpack Compose
     implementation ("androidx.compose.ui:ui:1.0.5")
-    implementation ("androidx.compose.material:material:1.0.5")
+    implementation ("androidx.compose.material3:material3:1.3.0")
     implementation ("androidx.compose.ui:ui-tooling:1.0.5")
+
 
     // Navigation for Compose
     implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
 
     // Coroutine support
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     // Coil for image loading
     implementation ("io.coil-kt:coil-compose:1.3.2")
 
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.0.0")
+        // Retrofit for networking
+        implementation ("com.squareup.retrofit2:retrofit:2.9.0")
 
-    // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+        // GSON converter for parsing JSON responses
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+        // OkHttp (Optional, for logging and better control over network requests)
+        implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+    // Room for local database
+    implementation("androidx.room:room-runtime:2.4.0")
+    kapt("androidx.room:room-compiler:2.4.0")
+    implementation("androidx.room:room-ktx:2.4.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.0")
+
+
 }
