@@ -1,7 +1,6 @@
 package banquemisr.challenge05.moviesdbapp.Model.Database
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import banquemisr.challenge05.moviesdbapp.Model.Genre
 
 @Entity(tableName = "movieEntity")
