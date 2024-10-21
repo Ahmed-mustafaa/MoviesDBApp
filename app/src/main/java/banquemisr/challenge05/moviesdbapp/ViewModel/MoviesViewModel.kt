@@ -50,11 +50,6 @@ class MoviesViewModel (private val repository: MovieRepository,
         }
     }
 
-    private fun insertMovie(movie: Movie) {
-        viewModelScope.launch {
-            repository.insertMovie(movie)
-        }
-    }
 
     fun getPopularMovies() {
         viewModelScope.launch {
