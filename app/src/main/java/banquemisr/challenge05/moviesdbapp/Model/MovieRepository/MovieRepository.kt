@@ -62,11 +62,11 @@ class MovieRepository (private  val apiService: ApiService,
     }.flowOn(Dispatchers.IO)
 
 
-    suspend fun insertMovies(movies: List<Movie>) {
+     fun insertMovies(movies: List<Movie>) {
         movieDao.insertMovies(movies)
     }
 
-    suspend fun insertMovie(movie: Movie) {
+     fun insertMovie(movie: Movie) {
         movieDao.insertMovie(movie)
     }
 
