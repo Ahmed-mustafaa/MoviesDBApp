@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
     companion object {
-
         var API_KEY: String = "33b3acf97a8db8641ca87066b3947177"
         private val BASE_URL = "https://api.themoviedb.org/3/"
         private val okHttpClient = OkHttpClient.Builder()
@@ -22,10 +21,8 @@ class RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-
-
-        val apiService: TmdbApiService by lazy {
-            retrofit.create(TmdbApiService::class.java)
+        val apiService: ApiService by lazy {
+            retrofit.create(ApiService::class.java)
         }
 
     }
