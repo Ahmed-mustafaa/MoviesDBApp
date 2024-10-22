@@ -6,14 +6,9 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
+
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -29,12 +24,40 @@ class MovieDaoTest{
     // creating a database in memory
     private lateinit var Database:MoviesDatabase
     private lateinit var Dao:MovieDao
+    private lateinit var movie1:Movie
+    private lateinit var movie2:Movie
+    private var movies= mutableListOf<Movie>()
+
     @Before
     fun setup() {
         Database = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
             MoviesDatabase::class.java).allowMainThreadQueries().build()
         Dao = Database.movieDao()
+        movie1 =  Movie(false,
+            "movie1 path",
+            1,120,
+            "EN",
+            "OMovie1 Title",
+            "Original1 Title",0.0,
+            0.0.toString(),"Poster1/test",
+            12000000,0,"movie1 Title",
+            false,
+            00.0,1
+        )
+         movie2 =  Movie(false,
+            "movie2 path",
+            2,120,
+            "EN",
+            "OTitle",
+            "Original Title",0.0,
+            0.0.toString(),"Poster/test",
+            12000000,0,"Test Title",
+            false,
+            00.0,1
+        )
+        movies.add(movie1)
+        movies.add(movie2)
     }
     @After
     fun teardown() {
@@ -46,28 +69,7 @@ class MovieDaoTest{
 
 @Test
  fun insertMovie()= runTest {
-  val movie1 =  Movie(false,
-        "movie1 path",
-        1,120,
-        "EN",
-        "OMovie1 Title",
-        "Original1 Title",0.0,
-        0.0.toString(),"Poster1/test",
-        12000000,0,"movie1 Title",
-        false,
-        00.0,1
-    )
-    val movie2 =  Movie(false,
-        "movie2 path",
-        2,120,
-        "EN",
-        "OTitle",
-        "Original Title",0.0,
-        0.0.toString(),"Poster/test",
-        12000000,0,"Test Title",
-        false,
-        00.0,1
-    )
+
     Dao.insertMovie(movie1)
     Dao.insertMovie(movie2)
     val allMovies = Dao.getAllMovies().first()
@@ -78,36 +80,20 @@ class MovieDaoTest{
 
 
 fun insertMovies()= runTest {
-    // creating a list to store movies
-    val movies = mutableListOf<Movie>()
-    val movie1 =  Movie(false,
-        "movie1 path",
-        1,120,
-        "EN",
-        "OMovie1 Title",
-        "Original1 Title",0.0,
-        0.0.toString(),"Poster1/test",
-        12000000,0,"movie1 Title",
-        false,
-        00.0,1
-    )
-    val movie2 =  Movie(false,
-        "movie2 path",
-        2,120,
-        "EN",
-        "OTitle",
-        "Original Title",0.0,
-        0.0.toString(),"Poster/test",
-        12000000,0,"Test Title",
-        false,
-        00.0,1
-    )
-    movies.add(movie1)
-    movies.add(movie2)
     Dao.insertMovies(movies)
-    val allMovies = Dao.getAllMovies().first()
-    assertThat(allMovies).containsExactly(movie1,movie2)
 
 }
+    @Test
+    fun deleteMovie()= runTest {
+
+        Dao.deleteMovie(movie1)
+    }
+
+    @Test
+    fun getAllMovies() =runTest  {
+        Dao.insertMovies(movies)
+        val allMovies = Dao.getAllMovies().first()
+        assertThat(allMovies).containsExactly(movie1,movie2)
+    }
 
 }
