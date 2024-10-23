@@ -1,6 +1,6 @@
 package banquemisr.challenge05.moviesdbapp.ViewModel
 
-import banquemisr.challenge05.moviesdbapp.view.NetworkConnectionObserver
+import banquemisr.challenge05.moviesdbapp.Screens.NetworkConnectionObserver
 import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.lifecycle.ViewModel

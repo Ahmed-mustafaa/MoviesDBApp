@@ -1,4 +1,4 @@
-package banquemisr.challenge05.moviesdbapp.view
+package banquemisr.challenge05.moviesdbapp.Screens
 
 import android.os.Build
 import android.util.Log

@@ -117,6 +117,17 @@ class MoviesViewModel(private val repository: IMovieRepository,
                 }          }
         }
     }
+    fun getCachedMovieById(movieId: Int) {
+        viewModelScope.launch {
+            repository.getMovieDetailsByID(movieId, Utils.API_KEY).collect { movie ->
+                if (movie != null) {
+                    _movieDetails.value = movie // Update your LiveData or StateFlow
+                } else {
+                    // Handle the case when the movie is not found or there's an error
+                    _movieDetails.value = null
+                }          }
+        }
+    }
 
     fun getCachedMovies() {
         viewModelScope.launch {

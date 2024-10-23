@@ -17,7 +17,7 @@
         android:theme="@style/Theme.MoviesDBApp"
         android:enableOnBackInvokedCallback="true"
         tools:targetApi="tiramisu">
-        <receiver android:name=".view.NetworkChangeReceiver"
+        <receiver android:name=".Screens.NetworkChangeReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>

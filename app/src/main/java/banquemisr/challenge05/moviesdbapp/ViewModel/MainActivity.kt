@@ -3,46 +3,32 @@ package banquemisr.challenge05.moviesdbapp.ViewModel
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresExtension
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import banquemisr.challenge05.moviesdbapp.Database.DatabaseBuilder
 import banquemisr.challenge05.moviesdbapp.Model.Movie
 import banquemisr.challenge05.moviesdbapp.MovieRepository.MovieRepository
 import banquemisr.challenge05.moviesdbapp.Service.RetrofitClient
 import banquemisr.challenge05.moviesdbapp.ui.theme.MoviesDBAppTheme
-import banquemisr.challenge05.moviesdbapp.view.MovieCard
-import banquemisr.challenge05.moviesdbapp.view.Nav
-import banquemisr.challenge05.moviesdbapp.view.NetworkConnectionObserver
-import coil.compose.rememberImagePainter
+import banquemisr.challenge05.moviesdbapp.Screens.Nav
+import banquemisr.challenge05.moviesdbapp.Screens.NetworkConnectionObserver
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     private lateinit var networkObserver: NetworkConnectionObserver
     private lateinit var viewModel: MoviesViewModel
-    val navController = NavHostController(this)
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,8 +37,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val isConnected by networkObserver.networkStatus.collectAsState(initial = true)
-
-
                 MoviesDBAppTheme {
                     val navController = rememberNavController()
                     val snackbarHostState = remember { SnackbarHostState() }
@@ -120,7 +104,7 @@ class MainActivity : ComponentActivity() {
 
 }
 @Composable
-private fun ConnectionStatusMessage(message: String) {
+fun ConnectionStatusMessage(message: String) {
     Text(
         text = message,
         modifier = Modifier

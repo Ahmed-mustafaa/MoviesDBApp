@@ -1,4 +1,4 @@
-package banquemisr.challenge05.moviesdbapp.view
+package banquemisr.challenge05.moviesdbapp.Screens
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -47,48 +47,8 @@ fun Nav(navController: NavHostController, viewModel: MoviesViewModel, padding: P
         ) { backStackEntry ->
             val movieId = backStackEntry.arguments?.getInt("movieId")
             val selectedMovie = viewModel.nowPlayingMovies.value.find { it.id == movieId }
-            MovieDetailsScreen(navController = navController, movie = selectedMovie, viewModel = viewModel)
+            MovieDetailsScreen(navController = navController, movie = selectedMovie, viewModel = viewModel,isConnected)
         }
     }
 }
 
-
-/*
-fun Nav(viewModel: MoviesViewModel){
-    val NavController = rememberNavController()
-
-    NavHost(navController = NavController, startDestination = "MainScreen"){
-        composable("MainScreen") {
-            MainScreen(navController = NavController, viewModel = viewModel)
-        }
-
-        // Now Playing screen
-        composable("NowPlayingScreen") {
-            NowPlayingScreen(navController = NavController, viewModel = viewModel)
-        }
-
-        // banquemisr.challenge05.moviesdbapp.Model.Database.Movie details screen with movieId as argument
-     */
-/*   composable("MovieDetailsScreen"
-*//*
-*/
-/*
-            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
-*//*
-*/
-/*
-        ) { backStackEntry ->
-            val movieId = backStackEntry.arguments?.getInt("movieId") ?: 0
-            MovieDetailsScreen(*//*
-*/
-/*movieId = movieId, movies=viewModel.nowPlayingMovies.collectAsState().value*//*
-*/
-/*)
-        }*//*
-
-        composable("MovieDetailsScreen"){
-            MovieDetailsScreen()
-        }
-    }
-    }
-*/

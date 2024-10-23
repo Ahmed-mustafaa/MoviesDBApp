@@ -1,4 +1,4 @@
-package banquemisr.challenge05.moviesdbapp.view
+package banquemisr.challenge05.moviesdbapp.Screens
 
 import android.os.Build
 import androidx.annotation.RequiresExtension
@@ -13,7 +13,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import banquemisr.challenge05.moviesdbapp.ViewModel.MoviesViewModel
 

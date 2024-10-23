@@ -1,5 +1,6 @@
-    package banquemisr.challenge05.moviesdbapp.view
+    package banquemisr.challenge05.moviesdbapp.Screens
 
+    import android.annotation.SuppressLint
     import android.os.Build
     import androidx.annotation.RequiresExtension
     import androidx.compose.foundation.Image
@@ -46,31 +47,25 @@
     import banquemisr.challenge05.moviesdbapp.ViewModel.MoviesViewModel
     import coil.compose.rememberImagePainter
 
-    /*@Composable
-    fun MovieDetailsDialog(movie: banquemisr.challenge05.moviesdbapp.Model.Database.Movie, onDismiss: () -> Unit) {
-        Dialog(onDismissRequest = onDismiss) {
-            Surface(
-                shape = MaterialTheme.shapes.medium,
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = movie.title, style = MaterialTheme.typography.displayMedium)
-                    Text(text = movie.overview)
-                    // Other movie details...
-                    Button(onClick = onDismiss) {
-                        Text("Close")
-                    }
-                }
-            }
-        }
-    }*/@OptIn(ExperimentalMaterial3Api::class)
+   @SuppressLint("SuspiciousIndentation")
+    @OptIn(ExperimentalMaterial3Api::class)
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     @Composable
 
-    fun MovieDetailsScreen(navController: NavHostController, movie: Movie?, viewModel: MoviesViewModel) {
+    fun MovieDetailsScreen(navController: NavHostController, movie: Movie?, viewModel: MoviesViewModel,isConnected:Boolean) {
+       val movieId = rememberSaveable { mutableStateOf(movie?.id) }
 
-        val movieId = rememberSaveable { mutableStateOf(movie?.id) }
+       LaunchedEffect(movieId) {
+           if (isConnected) {
+               viewModel.getMovieById(movie?.id)  // Fetch details from API when online
+           } else {
+               if (movie != null) {
+                   viewModel.getCachedMovieById(movie.id)
+               }  // Fetch from local cache when offline
+           }
+       }
 
-        LaunchedEffect(movieId.value) {
+       LaunchedEffect(movieId.value) {
             movieId.value?.let {
                 viewModel.getMovieById(it)
             }
