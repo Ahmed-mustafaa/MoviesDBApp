@@ -69,7 +69,6 @@ class MovieDaoTest{
 
 @Test
  fun insertMovie()= runTest {
-
     Dao.insertMovie(movie1)
     Dao.insertMovie(movie2)
     val allMovies = Dao.getAllMovies().first()

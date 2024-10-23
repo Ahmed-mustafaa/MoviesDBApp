@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import banquemisr.challenge05.moviesdbapp.Model.Movie
-
-@Database(entities = [Movie::class], version = 2, exportSchema = false)
+import androidx.room.TypeConverters
+import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
+@Database(entities = [Movie::class], version =3, exportSchema = false)
+@TypeConverters(Convertor::class)
 abstract class MoviesDatabase: RoomDatabase() {
     abstract fun movieDao(): MovieDao
 }
