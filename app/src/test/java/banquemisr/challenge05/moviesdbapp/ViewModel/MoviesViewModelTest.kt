@@ -1,10 +1,9 @@
 package banquemisr.challenge05.moviesdbapp.ViewModel
 
-import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
+import banquemisr.challenge05.moviesdbapp.Model.Movie
 
-import banquemisr.challenge05.moviesdbapp.Model.MovieRepository.FakeMovieRepository
+import banquemisr.challenge05.moviesdbapp.MovieRepository.FakeMovieRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

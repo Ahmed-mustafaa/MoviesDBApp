@@ -10,6 +10,10 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    plugins {
+        id("com.google.dagger.hilt.android") version "2.46.1" apply false // Add Hilt plugin here
+        id("com.android.application") version "8.3.0" apply false
+    }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -17,8 +21,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+
 }
 
 rootProject.name = "MoviesDBApp"
 include(":app")
- 
+

@@ -1,7 +1,7 @@
-package banquemisr.challenge05.moviesdbapp.Model.MovieRepository
+package banquemisr.challenge05.moviesdbapp.MovieRepository
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
+import banquemisr.challenge05.moviesdbapp.Model.Movie
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
 import kotlinx.coroutines.flow.Flow
 
 interface IMovieRepository{
@@ -11,7 +11,7 @@ interface IMovieRepository{
     suspend fun insertMovie(movie: Movie)
     suspend fun insertMovies(movies: List<Movie>)
     suspend fun getCachedMovies(): Flow<List<Movie>>
-    suspend fun insertMovieEntity(movie:Movie)
+    suspend fun insertMovieEntity(movie: Movie)
 
     suspend fun deleteMovie(movie: Movie)
     suspend fun getMovieDetailsByID(movieID: Int?, apikey: String): Flow<MovieEntity?>

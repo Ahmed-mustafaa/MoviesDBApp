@@ -1,7 +1,7 @@
 package banquemisr.challenge05.moviesdbapp.Model.MovieRepository
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
+import banquemisr.challenge05.moviesdbapp.Model.Movie
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
 import banquemisr.challenge05.moviesdbapp.Model.Genre
 import banquemisr.challenge05.moviesdbapp.Service.ApiResponse
 import banquemisr.challenge05.moviesdbapp.Service.ApiService

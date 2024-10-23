@@ -1,6 +1,7 @@
 package banquemisr.challenge05.moviesdbapp.Model.MovieRepository
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieDao
+import banquemisr.challenge05.moviesdbapp.Database.MovieDao
+import banquemisr.challenge05.moviesdbapp.MovieRepository.MovieRepository
 import banquemisr.challenge05.moviesdbapp.ViewModel.MoviesViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher

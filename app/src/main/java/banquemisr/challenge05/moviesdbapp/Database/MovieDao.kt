@@ -1,10 +1,12 @@
-package banquemisr.challenge05.moviesdbapp.Model.Database
+package banquemisr.challenge05.moviesdbapp.Database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import banquemisr.challenge05.moviesdbapp.Model.Movie
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -19,6 +21,8 @@ interface MovieDao {
 
     @Query("SELECT * FROM movies")
     fun getAllMovies(): Flow<List<Movie>>
+    @Query("SELECT * FROM movies")
+    fun getNowPlayingMovies(): List<Movie>
 
     // New method to insert a movie by its ID
     @Query("INSERT INTO movies (id) VALUES (:movieId)")

@@ -1,13 +1,13 @@
 
-package banquemisr.challenge05.moviesdbapp.Model.MovieRepository
+package banquemisr.challenge05.moviesdbapp.MovieRepository
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
+import banquemisr.challenge05.moviesdbapp.Model.Movie
 import android.net.http.HttpException
 import android.os.Build
 import androidx.annotation.RequiresExtension
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieDao
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
+import banquemisr.challenge05.moviesdbapp.Database.MovieDao
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
 
 import banquemisr.challenge05.moviesdbapp.Service.ApiService
 import banquemisr.challenge05.moviesdbapp.Service.Responses
@@ -18,13 +18,23 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
+import android.os.AsyncTask
+import android.util.Log
+import androidx.lifecycle.LiveData
+
 
 
 class MovieRepository (private  val apiService: ApiService,
                        private val movieDao: MovieDao
 ) : IMovieRepository {
+
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun getNowPlayingMovies(apikey: String): Flow<List<Movie>> = flow {
+        val cachedMovies = movieDao.getNowPlayingMovies()
+        if(cachedMovies.isNotEmpty()) {
+            val cached: List<Movie> = cachedMovies
+            emit(cached) // Emit cached data first
+        }
         try {
             val response = apiService.getNowPlayingMovies(apikey)
             val movies: List<Movie> = response.results
@@ -114,6 +124,7 @@ class MovieRepository (private  val apiService: ApiService,
             emit(null) // Emit null if movieID is null
             return@flow
         }
+
 
         try {
             val response = apiService.getMovieDetails(movieID, apikey)

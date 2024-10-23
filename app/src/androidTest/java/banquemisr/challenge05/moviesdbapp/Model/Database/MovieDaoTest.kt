@@ -5,6 +5,9 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
+import banquemisr.challenge05.moviesdbapp.Model.Movie
+import banquemisr.challenge05.moviesdbapp.Database.MovieDao
+import banquemisr.challenge05.moviesdbapp.Database.MoviesDatabase
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -22,10 +25,10 @@ class MovieDaoTest{
     @get:Rule
     var instantTaskExecutorRunWith= InstantTaskExecutorRule()
     // creating a database in memory
-    private lateinit var Database:MoviesDatabase
-    private lateinit var Dao:MovieDao
-    private lateinit var movie1:Movie
-    private lateinit var movie2:Movie
+    private lateinit var Database: MoviesDatabase
+    private lateinit var Dao: MovieDao
+    private lateinit var movie1: Movie
+    private lateinit var movie2: Movie
     private var movies= mutableListOf<Movie>()
 
     @Before

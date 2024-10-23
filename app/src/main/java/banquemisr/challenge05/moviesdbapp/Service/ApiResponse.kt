@@ -1,6 +1,6 @@
 package banquemisr.challenge05.moviesdbapp.Service
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
+import banquemisr.challenge05.moviesdbapp.Model.Movie
 
 data class ApiResponse(
     val page: Int,

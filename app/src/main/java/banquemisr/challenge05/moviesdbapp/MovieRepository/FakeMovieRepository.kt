@@ -1,8 +1,8 @@
-package banquemisr.challenge05.moviesdbapp.Model.MovieRepository
+package banquemisr.challenge05.moviesdbapp.MovieRepository
 
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
+import banquemisr.challenge05.moviesdbapp.Model.Movie
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

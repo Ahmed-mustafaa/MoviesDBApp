@@ -5,10 +5,9 @@ import android.util.Log
 import androidx.annotation.RequiresExtension
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
-import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
-import banquemisr.challenge05.moviesdbapp.Model.MovieRepository.FakeMovieRepository
-import banquemisr.challenge05.moviesdbapp.Model.MovieRepository.IMovieRepository
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
+import banquemisr.challenge05.moviesdbapp.Model.Movie
+import banquemisr.challenge05.moviesdbapp.MovieRepository.IMovieRepository
 import banquemisr.challenge05.moviesdbapp.Service.RetrofitClient
 import banquemisr.challenge05.moviesdbapp.Service.Utils
 import kotlinx.coroutines.flow.MutableStateFlow

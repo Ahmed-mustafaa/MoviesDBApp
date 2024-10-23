@@ -1,4 +1,4 @@
-package banquemisr.challenge05.moviesdbapp.Model.Database
+package banquemisr.challenge05.moviesdbapp.Database
 
 import android.content.Context
 import androidx.room.Room

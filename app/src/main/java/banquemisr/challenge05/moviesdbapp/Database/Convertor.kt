@@ -1,4 +1,4 @@
-package banquemisr.challenge05.moviesdbapp.Model.Database
+package banquemisr.challenge05.moviesdbapp.Database
 
 import banquemisr.challenge05.moviesdbapp.Model.Genre
 

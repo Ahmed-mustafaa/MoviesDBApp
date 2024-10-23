@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import banquemisr.challenge05.moviesdbapp.Model.MovieRepository.MovieRepository
+import banquemisr.challenge05.moviesdbapp.MovieRepository.MovieRepository
 
 class MoviesViewModelFactory(private val repository: MovieRepository,
                              private val networkObserver: NetworkConnectionObserver

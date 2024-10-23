@@ -1,6 +1,6 @@
 package banquemisr.challenge05.moviesdbapp.Service
 
-import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
+import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

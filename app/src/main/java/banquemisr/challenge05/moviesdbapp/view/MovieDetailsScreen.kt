@@ -1,7 +1,6 @@
     package banquemisr.challenge05.moviesdbapp.view
 
     import android.os.Build
-    import android.util.Log
     import androidx.annotation.RequiresExtension
     import androidx.compose.foundation.Image
     import androidx.compose.foundation.background
@@ -16,12 +15,8 @@
     import androidx.compose.foundation.layout.padding
     import androidx.compose.foundation.layout.width
     import androidx.compose.foundation.layout.wrapContentHeight
-    import androidx.compose.foundation.lazy.LazyColumn
-    import androidx.compose.foundation.lazy.LazyRow
-    import androidx.compose.foundation.lazy.rememberLazyListState
     import androidx.compose.foundation.shape.RoundedCornerShape
     import androidx.compose.material.icons.Icons
-    import androidx.compose.material.icons.filled.Add
     import androidx.compose.material.icons.filled.ArrowBack
     import androidx.compose.material3.ExperimentalMaterial3Api
     import androidx.compose.material3.Icon
@@ -29,7 +24,6 @@
     import androidx.compose.ui.platform.LocalConfiguration
 
     import androidx.compose.material3.MaterialTheme
-    import androidx.compose.material3.Surface
     import androidx.compose.material3.Text
     import androidx.compose.material3.TopAppBar
     import androidx.compose.runtime.Composable
@@ -45,12 +39,10 @@
     import androidx.compose.ui.graphics.Brush
     import androidx.compose.ui.graphics.Color
     import androidx.compose.ui.layout.ContentScale
-    import androidx.compose.ui.tooling.preview.Preview
     import androidx.compose.ui.unit.dp
-    import androidx.compose.ui.window.Dialog
     import androidx.navigation.NavHostController
-    import banquemisr.challenge05.moviesdbapp.Model.Database.Movie
-    import banquemisr.challenge05.moviesdbapp.Model.Database.MovieEntity
+    import banquemisr.challenge05.moviesdbapp.Model.Movie
+    import banquemisr.challenge05.moviesdbapp.Model.MovieEntity
     import banquemisr.challenge05.moviesdbapp.ViewModel.MoviesViewModel
     import coil.compose.rememberImagePainter
 
@@ -74,7 +66,7 @@
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     @Composable
 
-    fun MovieDetailsScreen(navController: NavHostController,  movie: Movie?,viewModel: MoviesViewModel) {
+    fun MovieDetailsScreen(navController: NavHostController, movie: Movie?, viewModel: MoviesViewModel) {
 
         val movieId = rememberSaveable { mutableStateOf(movie?.id) }
 

@@ -1,4 +1,4 @@
-package banquemisr.challenge05.moviesdbapp.Model.Database
+package banquemisr.challenge05.moviesdbapp.Model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

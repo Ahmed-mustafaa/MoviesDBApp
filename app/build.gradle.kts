@@ -50,6 +50,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -73,9 +74,14 @@ dependencies {
     implementation ("androidx.compose.material3:material3:1.3.0")
     implementation ("androidx.compose.ui:ui-tooling:1.0.5")
 
+    // Jetpack Compose Integration
+    implementation ("androidx.navigation:navigation-compose:2.8.3")
 
-    // Navigation for Compose
-    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
+
+    val nav_version = "2.7.1"
+
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
 
     // Coroutine support
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
@@ -96,11 +102,30 @@ dependencies {
         implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // Room for local database
-    implementation("androidx.room:room-runtime:2.4.0")
-    kapt("androidx.room:room-compiler:2.4.0")
-    implementation("androidx.room:room-ktx:2.4.0")
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.0")
 
+//Testing dependencies for androidTest
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.0")
+    androidTestImplementation("androidx.compose.ui:ui-test-manifest:1.5.0")
+    androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1")
+    androidTestImplementation ("androidx.arch.core:core-testing:2.1.0")
+    androidTestImplementation ("com.google.truth:truth:1.0.1")
+
+    //Testing dependencies for UnitTest
+
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation ("org.hamcrest:hamcrest-all:1.3")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("org.robolectric:robolectric:4.3.1")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1")
+    testImplementation ("com.google.truth:truth:1.0.1")
 
 }
